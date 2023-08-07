@@ -143,8 +143,9 @@ calcularVidaExtra(Carta, 0):-
 reducirPuntosDeMana(PuntosMana, Mana, PuntosMana2):-
     PuntosMana2 is PuntosMana - Mana.
 
-quePasaConLaCarta(jugador(Nombre,PuntosVida, PuntosMana, CartasMazo, CartasMano, CartasCampo), jugador(Nombre,PuntosVida, PuntosMana, CartasMazo, CartasMano, CartasCampo2), criatura(NombreCarta, PuntosDano, PuntosVidaCarta, CostoMana)):-
-    agregarCarta(CartasCampo,criatura(NombreCarta,PuntosDano,PuntosVidaCarta, CostoMana),CartasCampo2).
+quePasaConLaCarta(jugador(Nombre,PuntosVida, PuntosMana, CartasMazo, CartasMano, CartasCampo), jugador(Nombre,PuntosVida, PuntosMana, CartasMazo, CartasMano, CartasCampo2), Carta):-
+    esCriatura(Carta),
+    agregarCarta(CartasCampo,Carta,CartasCampo2).
 quePasaConLaCarta(Jugador, Jugador,hechizo(_,_,_)).
 
 puedeJugarInmediatamente(Jugador,Carta):-
